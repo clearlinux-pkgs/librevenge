@@ -4,7 +4,7 @@
 #
 Name     : librevenge
 Version  : 0.0.4
-Release  : 1
+Release  : 2
 URL      : https://dev-www.libreoffice.org/src/librevenge-0.0.4.tar.bz2
 Source0  : https://dev-www.libreoffice.org/src/librevenge-0.0.4.tar.bz2
 Summary  : API library for generic document converters
