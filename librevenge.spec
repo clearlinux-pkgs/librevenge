@@ -4,14 +4,14 @@
 #
 Name     : librevenge
 Version  : 0.0.4
-Release  : 4
+Release  : 5
 URL      : https://dev-www.libreoffice.org/src/librevenge-0.0.4.tar.bz2
 Source0  : https://dev-www.libreoffice.org/src/librevenge-0.0.4.tar.bz2
 Summary  : API library for generic document converters
 Group    : Development/Tools
 License  : LGPL-2.1 MPL-2.0-no-copyleft-exception
-Requires: librevenge-lib
-Requires: librevenge-license
+Requires: librevenge-lib = %{version}-%{release}
+Requires: librevenge-license = %{version}-%{release}
 BuildRequires : boost-dev
 BuildRequires : doxygen
 BuildRequires : pkgconfig(cppunit)
@@ -24,8 +24,9 @@ interfaces for text documents, vector graphics, spreadsheets and presentations.
 %package dev
 Summary: dev components for the librevenge package.
 Group: Development
-Requires: librevenge-lib
-Provides: librevenge-devel
+Requires: librevenge-lib = %{version}-%{release}
+Provides: librevenge-devel = %{version}-%{release}
+Requires: librevenge = %{version}-%{release}
 
 %description dev
 dev components for the librevenge package.
@@ -42,7 +43,7 @@ doc components for the librevenge package.
 %package lib
 Summary: lib components for the librevenge package.
 Group: Libraries
-Requires: librevenge-license
+Requires: librevenge-license = %{version}-%{release}
 
 %description lib
 lib components for the librevenge package.
@@ -58,29 +59,38 @@ license components for the librevenge package.
 
 %prep
 %setup -q -n librevenge-0.0.4
+cd %{_builddir}/librevenge-0.0.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1534616723
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1592624156
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static --disable-werror
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1534616723
+export SOURCE_DATE_EPOCH=1592624156
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/librevenge
-cp COPYING.LGPL %{buildroot}/usr/share/doc/librevenge/COPYING.LGPL
-cp COPYING.MPL %{buildroot}/usr/share/doc/librevenge/COPYING.MPL
+mkdir -p %{buildroot}/usr/share/package-licenses/librevenge
+cp %{_builddir}/librevenge-0.0.4/COPYING.LGPL %{buildroot}/usr/share/package-licenses/librevenge/3704f4680301a60004b20f94e0b5b8c7ff1484a9
+cp %{_builddir}/librevenge-0.0.4/COPYING.MPL %{buildroot}/usr/share/package-licenses/librevenge/9744cedce099f727b327cd9913a1fdc58a7f5599
 %make_install
 
 %files
@@ -140,6 +150,6 @@ cp COPYING.MPL %{buildroot}/usr/share/doc/librevenge/COPYING.MPL
 /usr/lib64/librevenge-stream-0.0.so.0.0.4
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/librevenge/COPYING.LGPL
-/usr/share/doc/librevenge/COPYING.MPL
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/librevenge/3704f4680301a60004b20f94e0b5b8c7ff1484a9
+/usr/share/package-licenses/librevenge/9744cedce099f727b327cd9913a1fdc58a7f5599
