@@ -1,3 +1,410 @@
+2022-12-28  David Tardon  <dtardon@redhat.com>  [1a823f4ba40e7197db376c715cc263daaca12afc]
+
+	prepare for a release
+
+
+2022-12-27  David Tardon  <dtardon@redhat.com>  [7207f233f21ba8dcdd80345bb847fc74f9308987]
+
+	configure: fix pretty printers' enablement
+
+
+2022-12-27  David Tardon  <dtardon@redhat.com>  [68203b0dd67fe3f3f877ddfee028c80f585e1bea]
+
+	do not distribute generated files
+
+
+2022-12-27  David Tardon  <dtardon@redhat.com>  [bc51a97987196c9b6784048a831ec4beba2a0305]
+
+	gdb: fix generation of autoloaders
+
+	AC_CONFIG_FILES() expands @datadir@ to ${prefix}/share ...
+
+2022-12-27  David Tardon  <dtardon@redhat.com>  [48bb736a18d9307dc008daa96fbff55ea4d16e78]
+
+	gdb: support newer python versions
+
+
+2022-12-27  David Tardon  <dtardon@redhat.com>  [54b2391c753c753541e6d674418f4db88a077414]
+
+	gdb: do not break on failed extraction from shared_ptr
+
+
+2022-12-27  David Tardon  <dtardon@redhat.com>  [21634875a47b16da59f1c82122cc773da12386b3]
+
+	gdb: handle extraction from shared_ptr better
+
+
+2022-01-13  Nathan Lee  <2431820-nathanal@users.noreply.gitlab.com>  [7e80098fbf918beda1647f2e92922d59d7cfe074]
+
+	Add viewbox to svg to fix the user unit to inch ratio
+
+	Without it, svg files are scaled incorrectly, using 72 user units
+	per inch instead of 96 uu per inch (or 90 for older specifications).
+	https://www.w3.org/TR/css3-values/#absolute-lengths
+	https://www.w3.org/TR/SVG11/coords.html#Units
+
+	Downstream issue: https://gitlab.com/inkscape/inkscape/-/issues/2983
+
+2019-11-23  Miklos Vajna  <vmiklos@collabora.com>  [c936dc1c3d0bb891ed9a04c30a1e67e01f1f3ec9]
+
+	Readability: convert these member functions to static
+
+
+2019-11-23  Miklos Vajna  <vmiklos@collabora.com>  [d18cbf4d238eb669b3fe3e2c58b961ded3d5adc9]
+
+	Readability: make these member functions const
+
+
+2019-04-11  Stephan Bergmann  <sbergman@redhat.com>  [819146d9b2f4c064a861d18d5d321f30aab43477]
+
+	Make --with-gdb-data-dir default to ${datadir}/gdb
+
+	...instead of hardcoded /usr/share/gdb.  That way, builds configured with just
+	--prefix=... (like a Flatpak build from the Fedora librevenge srpm) will
+	automatically pick a correctly prefixed dir here, without a need for an explicit
+	--with-gdb-data-dir=... configuration.
+
+2019-03-31  David Tardon  <dtardon@redhat.com>  [2f2afa1c94fe858a01d5543a5238b1d7146b6209]
+
+	pretty printers: support old impl. of RVNGPropertyListElement too
+
+
+2019-03-31  David Tardon  <dtardon@redhat.com>  [b43698a433fd696d670487d0c02503eabf899588]
+
+	fix pretty printer for RVNGPropertyList
+
+
+2019-01-18  Miklos Vajna  <vmiklos@collabora.com>  [3d43cf43bea1e7e2206839a594320b95191b7a98]
+
+	Fix too small loop variables
+
+	These loop variables had narrower type 'unsigned int' than the
+	iteration's upper bound (unsigned long or size_t).
+
+2018-05-05  David Tardon  <dtardon@redhat.com>  [19c411a48f12404b1a5eb323ba42dacb145ad06c]
+
+	disable werror by default
+
+
+2018-03-25  David Tardon  <dtardon@redhat.com>  [a09f475fb0d586c169055290c1789b341503b847]
+
+	use unique_ptr
+
+
+2018-03-25  David Tardon  <dtardon@redhat.com>  [32924baf452336e743cd132ca8bcee782e5df882]
+
+	use unique_ptr in RVNGPropertyList impl.
+
+
+2018-03-25  David Tardon  <dtardon@redhat.com>  [8988e2f5302fd16de36ddce371c1f9dec7724a3c]
+
+	avoid manual memory mgmt in sprintf()
+
+
+2018-03-25  David Tardon  <dtardon@redhat.com>  [be812e5d5cc59ed0392ee7cc3bdd6bca1bd4f253]
+
+	use unique_ptr for temp. property
+
+
+2018-03-25  David Tardon  <dtardon@redhat.com>  [d03421c5ccdc018fb80fb1849aab3d5503d6669d]
+
+	use unique_ptr for temp. property
+
+
+2018-03-25  David Tardon  <dtardon@redhat.com>  [37e8ee74fd60f5d6aa39cd3940fba4f6a478ba9a]
+
+	hold stream in unique_ptr
+
+
+2018-03-25  David Tardon  <dtardon@redhat.com>  [91e5bb4e40c41d9293135cff507d0f210d0fe8d6]
+
+	put own header first to ensure it is self-contained
+
+
+2018-02-02  Miklos Vajna  <vmiklos@collabora.co.uk>  [d7b15a2e00c7c99681bd1832e4568130f10e422e]
+
+	RVNGTextInterface: document new libepubgen fixed layout key
+
+	LibreOffice produces this and libepubgen understands it. It's for the case when
+	the document is a series of SVG images (to preserve the layout of the document
+	as-is), but still the generator want to produce a nice table of contents, so it
+	wants to list chapters and have them point to the relevant page. This key
+	allows the setup where a page span always contains a single page, so simply a
+	string vector is enough as a property.
+
+2018-02-01  David Tardon  <dtardon@redhat.com>  [d152d843e31723ad63e997156a4fd4e481ce9eec]
+
+	WaE: unnecessary parentheses in declaration
+
+
+2018-01-24  David Tardon  <dtardon@redhat.com>  [dc59793ba658d0bb39e8c626f919a4e4c7a1ad5e]
+
+	just use assign
+
+
+2018-01-24  David Tardon  <dtardon@redhat.com>  [27bb1b3dafd244967af3a74b054d9abfe0e15f40]
+
+	replace data-copying loop by std::copy
+
+
+2018-01-24  David Tardon  <dtardon@redhat.com>  [ac2fcad14eda751cf085b2472042f727410229a4]
+
+	drop unneeded conditions
+
+
+2018-01-24  David Tardon  <dtardon@redhat.com>  [340fc2fcfbf55c4862c8bbefea154a3dba96da7f]
+
+	initialize members directly
+
+
+2018-01-24  David Tardon  <dtardon@redhat.com>  [9c1f965b5e6d03e75bb1bf7b014eb2cf82bf1a4b]
+
+	replace data-copying loop by std::copy
+
+
+2018-01-24  David Tardon  <dtardon@redhat.com>  [e110894e84b6ef3f0b5f77524ee9cf23b0ea3f57]
+
+	avoid leak in partially-constructed object
+
+
+2018-01-24  David Tardon  <dtardon@redhat.com>  [6b94e141646852fb252e69fd0dc39ce1592cbed9]
+
+	ofz#5624 avoid leak in partially-constructed object
+
+
+2018-01-05  Miklos Vajna  <vmiklos@collabora.co.uk>  [9eb4ebddc4b476d0e66a93966499ba6ff65a414f]
+
+	m4: MSVC defines __cplusplus as 199711L still
+
+	See e.g.
+	<https://stackoverflow.com/questions/37503029/cplusplus-is-equal-to-199711-in-msvc-does-it-support-c11>,
+	on MSVC we can't depend on the value of __cplusplus, since that one is a
+	too low value, even if everything else works fine.
+
+2017-12-04  Miklos Vajna  <vmiklos@collabora.co.uk>  [46bcfca21db36671a50a35aa336f116a20b4838d]
+
+	RVNGTextInterface: document new LibreOffice <-> libepubgen keys
+
+	LibreOffice produces these and libepubgen understands them.
+
+2017-11-26  David Tardon  <dtardon@redhat.com>  [a0c8349e2131c175b74214ad449f615ecfe9cc65]
+
+	use data() to get std::vector data
+
+
+2017-11-26  David Tardon  <dtardon@redhat.com>  [303af8b90fc1bdedc121785624ca2bb88758e6a9]
+
+	ofz: avoid deref. of 1st element of empty vector
+
+
+2017-11-26  osnola  <alonso@loria.fr>  [93dce32ee8820a9b192d55ecf2f482f0996fb013]
+
+	librevenge[doc]: add informations to "explain" how to add MathML equations...
+
+
+2017-11-24  osnola  <alonso@loria.fr>  [0c456b144c0f1bb7d513b778ced46b2db00bfb5f]
+
+	typo[doc]: fix librevenge:mime-type orthograph...
+
+
+2017-11-06  Miklos Vajna  <vmiklos@collabora.co.uk>  [febb15ee20c933128700c4faf5370b5d6b1f159f]
+
+	RVNGTextInterface: document style:rel-width table prop
+
+	And also point out the format of these relative widths. Table is simple
+	percent, for column ODF uses something custom, stick to that one.
+
+2017-11-06  Miklos Vajna  <vmiklos@collabora.co.uk>  [731d0424876cfe0836c9f079eada94420910ef16]
+
+	RVNGTextInterface: document style:rel-column-width col prop
+
+	Same as in ODF.
+
+2017-10-28  Miklos Vajna  <vmiklos@collabora.co.uk>  [248c6c20924d18e43a9fbe460be482c98c4bcd7b]
+
+	Use auto when declaring iterators and when initializing with a cast
+
+
+2017-10-28  David Tardon  <dtardon@redhat.com>  [62b978f4bc325432bff4ce963f67ee3fa02d67cd]
+
+	rely on pkg-config to find zlib
+
+
+2017-10-28  David Tardon  <dtardon@redhat.com>  [9c0ece8b43a2e6e2bc5be620a211a16df8b81c54]
+
+	drop MSVC project files outdated by move to C++11
+
+
+2017-09-28  David Tardon  <dtardon@redhat.com>  [f640931b12e19a3ad893445dbcb3da4a5147d4ca]
+
+	add dummy generators for use in fuzzers
+
+	Only enabled when configured with --enable-fuzzers.
+
+2017-07-26  David Tardon  <dtardon@redhat.com>  [14323e63836e66778b574b42d8254943cfd67762]
+
+	Revert "Mark overriding member functions as 'override'"
+
+	This would break building of older releases of all libs with compilers
+	that don't use C++11 as default.
+
+	This reverts commit a1efaa096f6f19ab9a8f99ee26c7562d4068991c.
+
+2017-07-25  David Tardon  <dtardon@redhat.com>  [77b2e31f3b84af263c3bce30346cc8604b0638ef]
+
+	revert check of appended chars
+
+	Some libraries use the char overload of append to construct a RVNGString
+	from UTF-8 code points. So let's postpone this change till librevenge 0.1.
+
+2017-07-25  David Tardon  <dtardon@redhat.com>  [f31ea530a8f6fb4f54b9057488658c1faf698fba]
+
+	fix assignment from C string
+
+
+2017-07-25  David Tardon  <dtardon@redhat.com>  [a5f34c74e10a6ad68eee297fd389dd9ecbc554a7]
+
+	fix copypasta
+
+
+2017-07-23  Miklos Vajna  <vmiklos@collabora.co.uk>  [4c888e6cae8afab881755e110483a0b0ad3024ea]
+
+	Convert explicit for loops to range-based ones where possible
+
+	This is most useful in RVNGHTMLTextTableStyleManager::getCellContent() (and in
+	similar places) to avoid repeating ourselves.
+
+2017-07-22  Miklos Vajna  <vmiklos@collabora.co.uk>  [9a9dbe7de5d61af714e150c2756eecc289d0da85]
+
+	Convert 0 to nullptr where it's used as a pointer value
+
+	To make the code easier to read, because this means the remaining zeros
+	all mean numbers.
+
+2017-07-21  Miklos Vajna  <vmiklos@collabora.co.uk>  [a1efaa096f6f19ab9a8f99ee26c7562d4068991c]
+
+	Mark overriding member functions as 'override'
+
+	This does not affect the generated code (API or ABI), but:
+
+	1) Makes sure that in case the signature of one of these functions would
+	change by accident, the build breaks as the function no longer overrides
+	a base function.
+
+	2) Makes the code readable by explicitly marking all overriding
+	functions as 'override', where previously the reader had to read the
+	interface of the base class(es) as well to find out if the function is
+	virtual or not.
+
+	3) Since 'override' implies 'virtual', remove the 'virtual' keyword
+	where 'override' is present.
+
+2017-06-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [547d2fe6afb5f92dce829e6f171c9fca43a1a4b5]
+
+	fix -Werror=implicit-fallthrough
+
+
+2017-05-03  David Tardon  <dtardon@redhat.com>  [a2b7fbe073aca012a4b33c5a57d5f03feb9a6cc1]
+
+	drop unused include
+
+
+2017-05-03  David Tardon  <dtardon@redhat.com>  [8dfe226010b3feaedfd31757beb97c405bbdb35e]
+
+	update HACKING
+
+
+2017-05-03  David Tardon  <dtardon@redhat.com>  [4fd4f81f5610bf1aed8f3798b214ff5fea388c4c]
+
+	boost::lexical_cast -> std::to_string
+
+
+2017-05-03  David Tardon  <dtardon@redhat.com>  [2bd27fa34c3f319466ca9433cfd0c92b8e9b48a4]
+
+	boost::scoped_ptr -> std::unique_ptr
+
+
+2017-05-03  David Tardon  <dtardon@redhat.com>  [3f2b55a42558b416be604fce5055129aa7c67e6b]
+
+	boost::shared_ptr -> std::shared_ptr
+
+
+2017-05-03  David Tardon  <dtardon@redhat.com>  [5efcefe4034ebde310b4c5b6f42374fcfdbdb9a5]
+
+	switch to C++11
+
+
+2017-05-03  David Tardon  <dtardon@redhat.com>  [a5ee2af96e5c2785c09d6f70f106a19eab4efe9b]
+
+	ignore only auto-generated files in m4
+
+
+2017-05-03  David Tardon  <dtardon@redhat.com>  [05b71579ea473039785c2969eec3458b9ab5acba]
+
+	convert from spirit.classic to qi
+
+
+2017-05-03  David Tardon  <dtardon@redhat.com>  [97a54788492c29a0210dbcf09e4656dd4ba54c59]
+
+	add test for prop. ins. with conv. from string
+
+
+2017-05-03  David Tardon  <dtardon@redhat.com>  [63e694cd11a54b132acdb5b8db9911d97d3fd11e]
+
+	ofz#1323 avoid OOB read caused by unsigned int overflow
+
+
+2017-04-12  David Tardon  <dtardon@redhat.com>  [faec3f330c83abf74ad94be04535fd3cbf424ce9]
+
+	ofz#1031 sanitize shifts
+
+
+2017-04-10  David Tardon  <dtardon@redhat.com>  [536a5c77caf8f929c5a695a203b7bc29ec891d98]
+
+	test string input validation
+
+
+2017-04-10  David Tardon  <dtardon@redhat.com>  [4787d517ae3d92b2666d00816730a8218c59c33a]
+
+	ofz#1077 sanitize RVNGString inputs
+
+	... to ensure it always contains a valid UTF-8 string.
+
+2017-03-31  David Tardon  <dtardon@redhat.com>  [2da08d40098aec8e847e83a0a46af9b38161685c]
+
+	add zip fuzzer
+
+
+2017-03-30  David Tardon  <dtardon@redhat.com>  [a2ef905355a4ecb447a46b304a34584445a7fa80]
+
+	0-length substream can be null
+
+
+2017-03-30  David Tardon  <dtardon@redhat.com>  [290c0a594f72821484f64231d3b663806fc9c179]
+
+	create OLE2 fuzzer
+
+
+2017-03-30  David Tardon  <dtardon@redhat.com>  [dade697731bfd002d884e6b2028ea0205cd2a1c4]
+
+	ofz#962 fix handling of inflate error
+
+
+2017-03-30  David Tardon  <dtardon@redhat.com>  [83c382dfe0d41922e21cfb9bb79ab9daec148bad]
+
+	astyle
+
+
+2017-03-30  David Tardon  <dtardon@redhat.com>  [5d63d2ff46942e626136c45ec42823820e24aecf]
+
+	ofz#963 run sanity check after computing block size
+
+
+2016-03-05  David Tardon  <dtardon@redhat.com>  [bc8ab9c5317d22d9ec4722b048835cdea4e50f61]
+
+	libwpd#7 add missing include for std::max
+
+
 2016-01-11  David Tardon  <dtardon@redhat.com>  [c22162a463a76b8a210a27f3c4528682a186e19f]
 
 	update NEWS
